@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome_background"
+    tools:context=".Welcome" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="7dp"
+        android:gravity="center_vertical|center_horizontal|fill"
+        android:onClick="btnContinue_clicked"
+        android:paddingBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp"
+        android:text="@string/button_continue"
+        android:typeface="serif" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/app_title" android:contentDescription="@string/app_name"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher" />
+
+</RelativeLayout>

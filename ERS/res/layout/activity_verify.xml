@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/simplepage_background"
+    tools:context=".Verify" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/title_verify"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white_title"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="25dp"
+        android:text="@string/verify_description"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="30dp"
+        android:text="@string/verify_instruction"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/gray_light"
+        android:typeface="serif" />
+
+    <EditText
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="phone" 
+        android:maxLength="10"        
+        />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPhone"
+        android:layout_alignBottom="@+id/txtPhone"
+        android:layout_toRightOf="@+id/txtPhone"
+        android:gravity="center_vertical|center_horizontal|fill"
+        android:onClick="btnOK_clicked"
+        android:paddingBottom="0dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="0dp"
+        android:text="@string/ok_verify"
+        android:typeface="serif" />
+
+</RelativeLayout>
