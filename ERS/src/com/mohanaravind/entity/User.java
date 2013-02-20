@@ -31,6 +31,9 @@ public class User {
 	
 	//Contains the seed informatoin used for generation of login token
 	private String mSeed;
+	
+	//Contains the passphrase information
+	private String mPassPhrase;
 		
 	
 	private Status mStatus;
@@ -55,6 +58,12 @@ public class User {
 		return mEmailID;
 	}
 	
+	public String getPassPhrase(){
+		return mPassPhrase;
+	}
+	
+	
+	
 	public void setUserID(String userID){		
 		this.mUserID = userID;
 		this.mStatus = Status.Registered;
@@ -74,6 +83,10 @@ public class User {
 	
 	public void setSeed(String seed){
 		this.mSeed = seed;
+	}
+	
+	public void setPassPhrase(String passPhrase){
+		this.mPassPhrase = passPhrase;
 	}
 
 	/**
@@ -96,6 +109,9 @@ public class User {
 		
 		//Retrieve the token
 		this.mToken = preferencesHandler.getPreference("token");
+		
+		//Retrieve the passphrase
+		this.mToken = preferencesHandler.getPreference("passPhrase");
 		
 		try {
 			//Check whether the user id was retrieved
@@ -121,6 +137,7 @@ public class User {
 			preferencesHandler.setPreference("DeviceID", mDeviceID);
 			preferencesHandler.setPreference("Seed", mSeed);
 			preferencesHandler.setPreference("Token", mToken);
+			preferencesHandler.setPreference("PassPhrase", mPassPhrase);
 		}catch (Exception ex){
 			
 		}

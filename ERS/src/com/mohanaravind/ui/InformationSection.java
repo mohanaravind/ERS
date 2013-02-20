@@ -64,8 +64,10 @@ public class InformationSection {
 		this.mActivity = activity;
 		this.mOnClickListener = onClickListener;
 		
+		//Construct the title bar
+		constructTitleBar("Personal Information");
 		
-		construct();
+		//construct();
 	}
 	
 
@@ -81,8 +83,6 @@ public class InformationSection {
 	private void construct(){
 		LinearLayout.LayoutParams lvMessageParams;
 		
-			
-		mInformationLayout.setPadding(10,10,10,10);
 		
 		//Start rendering the button
 		mSaveButton = new Button(mActivity);
@@ -124,6 +124,24 @@ public class InformationSection {
 		mInformationLayout.addView(mInformationText);		
 	}
 
-	
+	/**
+	 * Constructs the title bar
+	 */
+	private void constructTitleBar(String title){
+		TextView tvTitle = new TextView(mActivity);
+		tvTitle.setText(title);
+		tvTitle.setTextAppearance(mActivity,R.style.TitleBar);
+
+		
+		LinearLayout.LayoutParams titleBarLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 
+		LinearLayout.LayoutParams.WRAP_CONTENT);
+		titleBarLayoutParams.setMargins(18,25,0,25);
+		
+		tvTitle.setLayoutParams(titleBarLayoutParams);
+		
+		mInformationLayout.addView(tvTitle);
+		mInformationLayout.setBackgroundResource(R.drawable.frame_background);
+		
+	}
 
 }

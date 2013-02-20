@@ -28,12 +28,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int app_title=0x7f020001;
         public static final int backgroundtransparency=0x7f020002;
         public static final int emergency=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int mya=0x7f020005;
-        public static final int red_button=0x7f020006;
-        public static final int simplepage_background=0x7f020007;
-        public static final int sos_button=0x7f020008;
-        public static final int welcome_background=0x7f020009;
+        public static final int frame_background=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int mya=0x7f020006;
+        public static final int red_button=0x7f020007;
+        public static final int simplepage_background=0x7f020008;
+        public static final int sos_button=0x7f020009;
+        public static final int welcome_background=0x7f02000a;
     }
     public static final class id {
         public static final int btnOk=0x7f090005;
@@ -111,6 +112,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ButtonBar=0x7f070003;
         public static final int ButtonBarButton=0x7f070002;
         public static final int FullscreenTheme=0x7f070004;
+        /**  
+    android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/title_verify"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white_title"
+        android:textStyle="bold"
+        android:typeface="serif" 
+         */
+        public static final int TitleBar=0x7f070005;
     }
     public static final class xml {
         public static final int widgetproviderinfo=0x7f040000;

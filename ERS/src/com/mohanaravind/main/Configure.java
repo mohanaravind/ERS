@@ -4,7 +4,7 @@ import com.mohanaravind.dbutility.DataStore;
 import com.mohanaravind.entity.EmergencyContactInfo;
 import com.mohanaravind.entity.User.Status;
 import com.mohanaravind.ui.ContactsSection;
-import com.mohanaravind.ui.HistorySection;
+import com.mohanaravind.ui.AuthenticationSection;
 import com.mohanaravind.ui.InformationSection;
 import com.mohanaravind.utility.ContactProvider;
 import com.mohanaravind.utility.ContactProvider.ContactDetail;
@@ -242,7 +242,7 @@ public class Configure extends FragmentActivity implements
 						view = mInformationSection.getView();				
 						break;
 					case HISTORY:								
-						mHistorySection = new HistorySection(getActivity(), new ContactListener());
+						mHistorySection = new AuthenticationSection(getActivity(), new ContactListener());
 						view = mHistorySection.getView();
 						break;			
 					default:					
@@ -263,7 +263,7 @@ public class Configure extends FragmentActivity implements
 		
 		private ContactsSection mContactsSection;
 		private InformationSection mInformationSection;
-		private HistorySection mHistorySection;
+		private AuthenticationSection mHistorySection;
 		
 		//private EmergencyContactInfo emergencyContactInfo;
 		

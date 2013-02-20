@@ -327,6 +327,7 @@ public class Verify extends Activity {
 					passPhrase = jsonResult.getString(resources.getString(R.string.json_name_passphrase));
 					
 					//Set user details
+					user.setPassPhrase(passPhrase);
 					user.setDeviceID(jsonResult.getString(resources.getString(R.string.json_name_seed)));
 					user.setDeviceID(jsonResult.getString(resources.getString(R.string.json_name_token)));
 					

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -30,7 +30,28 @@
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@null</item>
-
+    </style>
+    
+    
+    <!-- 
+    android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/title_verify"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white_title"
+        android:textStyle="bold"
+        android:typeface="serif" -->
+    
+    <style name="TitleBar"> 
+    	<item name="android:textAppearance">@android:attr/textAppearanceMedium</item>
+    	<item name="android:textColor">@color/white_title</item>
+    	<item name="android:textStyle">bold</item>
+    	<item name="android:typeface">serif</item>   
     </style>
 
 </resources>

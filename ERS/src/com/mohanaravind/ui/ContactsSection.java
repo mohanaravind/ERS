@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.text.style.TextAppearanceSpan;
 import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -51,6 +52,7 @@ public class ContactsSection {
 		this.mLinearLayout = new LinearLayout(activity);
 		
 		this.mLinearLayout.setOrientation(LinearLayout.VERTICAL);
+		this.mLinearLayout.setBackgroundResource(R.drawable.frame_background);
 		
 		this.mActivity = activity;
 		this.mOnClickListener = onClickListener;
@@ -68,6 +70,8 @@ public class ContactsSection {
 		try {
 			String contact;
 						
+			
+			
 			contact = FIRST_CONTACT;			
 			displayContactInfo(mContactDisplays.get(contact), emergencyContactInfo.getContactDetails().get(contact));
 			
@@ -100,7 +104,7 @@ public class ContactsSection {
 			//Set the layout parameters
 			LayoutParams params = new LinearLayout.LayoutParams(CONTACT_HEIGHT, CONTACT_WIDTH);			
 			contactDisplay.imageView.setLayoutParams(params);			
-			contactDisplay.imageView.setBackgroundColor(Color.GRAY);
+			contactDisplay.imageView.setBackgroundColor(Color.RED);
 			contactDisplay.imageView.setPadding(CONTACT_BORDER, CONTACT_BORDER, CONTACT_BORDER, CONTACT_BORDER);
 					
 			
@@ -119,15 +123,38 @@ public class ContactsSection {
 	//@Override
 	private void construct(){
 		String contact;
+		
+		//Construct the title bar
+		constructTitleBar("Emergency Contacts");
 						
 		//Create the first emergency contact
 		contact = FIRST_CONTACT;
 		mContactDisplays.put(contact, addEmergencyContact(" Emergency contact", contact));
-	
+			
+		
 		//Create the second emergency contact
 		contact = SECOND_CONTACT;
 		mContactDisplays.put(contact, addEmergencyContact(" Emergency contact", contact));
 
+	}
+
+	/**
+	 * Constructs the title bar
+	 */
+	private void constructTitleBar(String title){
+		TextView tvTitle = new TextView(mActivity);
+		tvTitle.setText(title);
+		tvTitle.setTextAppearance(mActivity,R.style.TitleBar);
+
+		
+		LinearLayout.LayoutParams titleBarLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 
+		LinearLayout.LayoutParams.WRAP_CONTENT);
+		titleBarLayoutParams.setMargins(18,25,0,25);
+		
+		tvTitle.setLayoutParams(titleBarLayoutParams);
+		
+		mLinearLayout.addView(tvTitle);
+		mLinearLayout.setBackgroundResource(R.drawable.frame_background);
 	}
 
 
@@ -144,16 +171,18 @@ public class ContactsSection {
 		//Create the message in the content
 		lvMessage = new LinearLayout(mActivity);
 
-
+		
 		lvMessage.setBackgroundResource(R.drawable.backgroundtransparency);
 		lvMessage.setPadding(5,5,5,5);
 		
 		lvMessage.setGravity(Gravity.CENTER_VERTICAL);
+		//lvMessage.setBackgroundColor(Color.RED);
 
 		//Create the layout parameters
 		lvMessageParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		lvMessageParams.setMargins(0,0,0,4);
+		
 
 		//Set the layout params
 		lvMessage.setLayoutParams(lvMessageParams);
@@ -190,6 +219,7 @@ public class ContactsSection {
 		
 		//Add the message view
 		mLinearLayout.addView(lvMessage);
+		
 		
 		contactDisplay = new ContactDisplay(tvMessage, imgContact);
 		
