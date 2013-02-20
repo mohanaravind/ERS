@@ -17,12 +17,15 @@
     <string name="verify_message">Verifying</string>
     <string name="url_regiseruser">http://emergencymedicalrecords.appspot.com/registeruserservlet</string>
     <string name="apiKey">23a2A!0aSdsaAFUpqmvA49()564@3Sv18sA413g</string>
-	<string name="service_mailid">emergencymedicalrecords@appspot.gserviceaccount.com</string>
-	<string name="json_name_passphrase">PassPhrase</string>
-	<string name="json_name_token">Token</string>
-	<string name="json_name_seed">Seed</string>
-	<string name="json_name_result">Result</string>
-	<string name="result_success_code">OK</string>
-    
-    
+    <string name="service_mailid">emergencymedicalrecords@appspot.gserviceaccount.com</string>
+    <string name="json_name_passphrase">PassPhrase</string>
+    <string name="json_name_token">Token</string>
+    <string name="json_name_seed">Seed</string>
+    <string name="json_name_result">Result</string>
+    <string name="result_success_code">OK</string>
+    <string name="title_activity_sos">SOSActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="sos_close">Close</string>
+    <string name="sos_url">http://goo.gl/7gPaU</string>
+
 </resources>

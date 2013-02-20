@@ -328,8 +328,8 @@ public class Verify extends Activity {
 					
 					//Set user details
 					user.setPassPhrase(passPhrase);
-					user.setDeviceID(jsonResult.getString(resources.getString(R.string.json_name_seed)));
-					user.setDeviceID(jsonResult.getString(resources.getString(R.string.json_name_token)));
+					user.setSeed(jsonResult.getString(resources.getString(R.string.json_name_seed)));
+					user.setToken(jsonResult.getString(resources.getString(R.string.json_name_token)));
 					
 					//Display the passphrase
 					mMessage = "Sucessfully verified.\n\nYour passphrase:\n" + passPhrase;		

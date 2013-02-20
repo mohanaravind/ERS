@@ -34,6 +34,7 @@ import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.text.method.DateTimeKeyListener;
 import android.util.Log;
+import android.view.ViewDebug.FlagToString;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -118,29 +119,20 @@ public class WidgetService extends Service {
 					*/
 	            	
 	            	//HTTP data demo
-	            	String response = "Sending...";
-	            	
-	            	MyListener myListener = new MyListener();
-	            	
-	            	String URI = "http://emergencymedicalrecords.appspot.com/registeruserservlet?apiKey=23a2A!0aSdsaAFUpqmvA49()564@3Sv18sA413g&deviceId=6546548849sdf&phoneNumber=17163935750";
-	            	
-	            	HTTPUtility httpUtility = new HTTPUtility(URI, myListener, RequestType.GET);
-	            	
-	            	Thread thread = new Thread(httpUtility);
-	            	
-	            	thread.start();
+       	
+
 					
-	            	Context context = this.getApplicationContext();
-	            	TelephonyManager manager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-	            	response = manager.getDeviceId();
+	            	String message = "Sending SOS messages...";
 	            	
 	            	
 					//Display a toast asking the user to touch to get the pixel color
 					Toast tstMessage = Toast.makeText(this,
-							response,
+							message,
 							Toast.LENGTH_LONG);
 					
 					tstMessage.show();
+					
+					sendSOSMessage();
 				} catch (Exception e) {
 					Log.v("Ara", e.getMessage());
 				}
@@ -160,24 +152,11 @@ public class WidgetService extends Service {
 	}
 
 	
-	private class MyListener implements IHTTPUtilityListener{
-
-		@Override
-		public void responseReceived(HTTPResult httpResult) {
-
-			try {
-				Log.v("Ara", httpResult.getResponseAsJSONObject().getString("Seed"));
-			} catch (JSONException e) {
-				Log.v("Ara", httpResult.getRawResponse());
-			}
-		}
-
-		@Override
-		public void responseFailed(HTTPResult httpResult) {
-			// TODO Auto-generated method stub
-			Log.v("Ara", httpResult.getRawResponse());
-		}
+	private void sendSOSMessage(){
+		Intent intent = new Intent(this, SOSActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		
+		startActivity(intent);
 	}
 
 

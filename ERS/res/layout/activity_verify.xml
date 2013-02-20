@@ -9,7 +9,7 @@
      >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -26,8 +26,8 @@
         android:id="@+id/txtVerifyDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/tvDetails"
+        android:layout_below="@+id/tvDetails"
         android:layout_marginTop="25dp"
         android:text="@string/verify_description"
         android:typeface="serif" />

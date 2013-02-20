@@ -203,7 +203,7 @@ public class AuthenticationSection {
 		
 	}
 	
-	private class AuthenticationDisplay{
+	public class AuthenticationDisplay{
 		private TextView mTokenView;
 		private Button mGenerateButton;		
 	

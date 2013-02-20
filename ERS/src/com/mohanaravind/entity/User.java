@@ -62,6 +62,19 @@ public class User {
 		return mPassPhrase;
 	}
 	
+	public String getSeed(){
+		return mSeed;
+	}
+	
+	public String getDeviceID(){
+		return mDeviceID;
+	}
+	
+	public String getToken(){
+		return mToken;
+	}
+	
+	
 	
 	
 	public void setUserID(String userID){		
@@ -105,13 +118,13 @@ public class User {
 		this.mDeviceID = preferencesHandler.getPreference("DeviceID");
 		
 		//Retrieve the seed
-		this.mSeed = preferencesHandler.getPreference("seed");
+		this.mSeed = preferencesHandler.getPreference("Seed");
 		
 		//Retrieve the token
-		this.mToken = preferencesHandler.getPreference("token");
+		this.mToken = preferencesHandler.getPreference("Token");
 		
 		//Retrieve the passphrase
-		this.mToken = preferencesHandler.getPreference("passPhrase");
+		this.mPassPhrase = preferencesHandler.getPreference("PassPhrase");
 		
 		try {
 			//Check whether the user id was retrieved

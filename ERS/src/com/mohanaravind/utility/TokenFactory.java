@@ -32,6 +32,7 @@ public class TokenFactory {
 	private String passphrase = "";
 	private String phoneNumber = "";
 	private String deviceId = "";
+	private String emailID = "";
 	
 		
 	
@@ -42,11 +43,12 @@ public class TokenFactory {
 	 * @param passphrase
 	 * @param seed
 	 */
-	public TokenFactory(String phoneNumber, String deviceId, String passphrase, Integer seed){
+	public TokenFactory(String phoneNumber, String deviceId, String passphrase, String seed, String emailID){
 		this.phoneNumber = phoneNumber;
 		this.deviceId = deviceId;
 		this.passphrase = passphrase;
-		this.seed = seed;
+		this.seed = Integer.valueOf(seed);
+		this.emailID = emailID;
 	}
 	
 
@@ -123,7 +125,7 @@ public class TokenFactory {
 	 */
 	private void generatePhoneHash(){
 		try {
-			phoneHash = seed.hashCode() - secondaryKey + salt.hashCode() * phoneNumber.hashCode();
+			phoneHash = seed.hashCode() - secondaryKey + salt.hashCode() * phoneNumber.hashCode() + emailID.hashCode();
 		} catch (Exception e) {
 			phoneHash = 1879348;
 		}

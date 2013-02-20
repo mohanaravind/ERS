@@ -2,15 +2,19 @@ package com.mohanaravind.main;
 
 import com.mohanaravind.dbutility.DataStore;
 import com.mohanaravind.entity.EmergencyContactInfo;
+import com.mohanaravind.entity.User;
 import com.mohanaravind.entity.User.Status;
 import com.mohanaravind.ui.ContactsSection;
 import com.mohanaravind.ui.AuthenticationSection;
 import com.mohanaravind.ui.InformationSection;
 import com.mohanaravind.utility.ContactProvider;
+import com.mohanaravind.utility.TokenFactory;
 import com.mohanaravind.utility.ContactProvider.ContactDetail;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
@@ -23,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 public class Configure extends FragmentActivity implements
@@ -238,11 +243,11 @@ public class Configure extends FragmentActivity implements
 						displayData();
 						break;
 					case INFORMATION:		
-						mInformationSection = new InformationSection(getActivity(), new ContactListener());
+						mInformationSection = new InformationSection(getActivity(), new TokenGenerationHandler());
 						view = mInformationSection.getView();				
 						break;
 					case HISTORY:								
-						mHistorySection = new AuthenticationSection(getActivity(), new ContactListener());
+						mHistorySection = new AuthenticationSection(getActivity(), new TokenGenerationHandler());
 						view = mHistorySection.getView();
 						break;			
 					default:					
@@ -355,6 +360,50 @@ public class Configure extends FragmentActivity implements
 			
 
 			
+		}
+		
+		
+		private class TokenGenerationHandler implements OnClickListener{
+
+			@Override
+			public void onClick(View v) {
+				try {
+					mHistorySection.mAuthenticationSectionDisplay.getTokenView().setText(getToken());
+				} catch (Exception e) {
+					Log.v("Ara", e.getMessage());
+				}
+				
+			}
+			
+		}
+		
+		/**
+		 * Generates the token
+		 * @return
+		 */
+		private String getToken(){
+			String token = "Unable to generate";
+			
+			try{
+				User user = DataStore.getUser(getActivity());
+				TokenFactory tokenFactory = new TokenFactory(user.getUserID(), user.getDeviceID(), user.getPassPhrase(),
+															 user.getSeed(), user.getEmailID());
+				
+				//Generate the token
+				Integer tokenized = tokenFactory.generateToken();
+								
+				token = tokenized.toString();
+				
+				//Copy text to clipboard
+				ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE); 
+				ClipData clip = ClipData.newPlainText("Token", token);
+				clipboard.setPrimaryClip(clip);
+			}catch(Exception ex){
+				token = "Unable to generate";
+				Log.v("Ara", ex.getMessage());
+			}
+			
+			return token;
 		}
 		
 		
