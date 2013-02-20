@@ -20,6 +20,19 @@ public class User {
 	//Phone number of the user is the USER ID
 	private String mUserID;
 	
+	//Email id of the user
+	private String mEmailID;
+	
+	//Device id of the user
+	private String mDeviceID;
+	
+	//Contains the user's emergency token
+	private String mToken;
+	
+	//Contains the seed informatoin used for generation of login token
+	private String mSeed;
+		
+	
 	private Status mStatus;
 	
 	
@@ -38,9 +51,29 @@ public class User {
 		return mUserID;
 	}
 	
+	public String getEmailID(){
+		return mEmailID;
+	}
+	
 	public void setUserID(String userID){		
 		this.mUserID = userID;
 		this.mStatus = Status.Registered;
+	}
+	
+	public void setEmailID(String emailID){
+		this.mEmailID = emailID;
+	}
+	
+	public void setDeviceID(String deviceId){
+		this.mDeviceID = deviceId;
+	}
+	
+	public void setToken(String token){
+		this.mToken = token;
+	}
+	
+	public void setSeed(String seed){
+		this.mSeed = seed;
 	}
 
 	/**
@@ -51,6 +84,18 @@ public class User {
 		
 		//Retrieve the user id
 		this.mUserID = preferencesHandler.getPreference("UserID");
+		
+		//Retrieve the user primary email id
+		this.mEmailID = preferencesHandler.getPreference("EmailID");
+		
+		//Retrieve the device id
+		this.mDeviceID = preferencesHandler.getPreference("DeviceID");
+		
+		//Retrieve the seed
+		this.mSeed = preferencesHandler.getPreference("seed");
+		
+		//Retrieve the token
+		this.mToken = preferencesHandler.getPreference("token");
 		
 		try {
 			//Check whether the user id was retrieved
@@ -71,7 +116,11 @@ public class User {
 		PreferencesHandler preferencesHandler = new PreferencesHandler(activity);
 		
 		try{
-			preferencesHandler.setPreference("UserID", mUserID);			
+			preferencesHandler.setPreference("UserID", mUserID);	
+			preferencesHandler.setPreference("EmailID", mEmailID);
+			preferencesHandler.setPreference("DeviceID", mDeviceID);
+			preferencesHandler.setPreference("Seed", mSeed);
+			preferencesHandler.setPreference("Token", mToken);
 		}catch (Exception ex){
 			
 		}

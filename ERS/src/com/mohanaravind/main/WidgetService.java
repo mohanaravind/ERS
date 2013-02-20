@@ -3,11 +3,22 @@
  */
 package com.mohanaravind.main;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
+import org.json.JSONException;
+
+import com.mohanaravind.utility.TokenFactory;
 import com.mohanaravind.dbutility.DataStore;
+import com.mohanaravind.utility.HTTPUtility;
+import com.mohanaravind.utility.HTTPUtility.HTTPResult;
+import com.mohanaravind.utility.HTTPUtility.RequestType;
+import com.mohanaravind.utility.DeviceInfoProvider;
 import com.mohanaravind.utility.SMSProvider;
 import com.mohanaravind.utility.SMSReceiver;
+import com.mohanaravind.utility.HTTPUtility.IHTTPUtilityListener;
 import com.mohanaravind.utility.SMSReceiver.Status;
 
 import android.app.PendingIntent;
@@ -20,6 +31,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.SmsMessage;
+import android.telephony.TelephonyManager;
 import android.text.method.DateTimeKeyListener;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -92,12 +104,46 @@ public class WidgetService extends Service {
 	            RemoteViews views = new RemoteViews(this.getPackageName(),R.layout.widget_sos);
 	            //views.setTextViewText(R.id.widgetMood, currentMood);
 	            appWidgetMan.updateAppWidget(widgetId, views);
-	            				//Display a toast asking the user to touch to get the pixel color
-				Toast tstMessage = Toast.makeText(this,
-						"Here goes the message",
-						Toast.LENGTH_LONG);
-				
-				tstMessage.show();
+	            
+	            
+	            try {
+	            	/*
+					//Token demo
+					TokenFactory tokenFactory = new TokenFactory("17163935750", "6546548849sdf", "swordfish", 1484986);
+					
+					Integer token = tokenFactory.generateToken();
+					
+					String strToken = token.toString();
+					
+					*/
+	            	
+	            	//HTTP data demo
+	            	String response = "Sending...";
+	            	
+	            	MyListener myListener = new MyListener();
+	            	
+	            	String URI = "http://emergencymedicalrecords.appspot.com/registeruserservlet?apiKey=23a2A!0aSdsaAFUpqmvA49()564@3Sv18sA413g&deviceId=6546548849sdf&phoneNumber=17163935750";
+	            	
+	            	HTTPUtility httpUtility = new HTTPUtility(URI, myListener, RequestType.GET);
+	            	
+	            	Thread thread = new Thread(httpUtility);
+	            	
+	            	thread.start();
+					
+	            	Context context = this.getApplicationContext();
+	            	TelephonyManager manager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+	            	response = manager.getDeviceId();
+	            	
+	            	
+					//Display a toast asking the user to touch to get the pixel color
+					Toast tstMessage = Toast.makeText(this,
+							response,
+							Toast.LENGTH_LONG);
+					
+					tstMessage.show();
+				} catch (Exception e) {
+					Log.v("Ara", e.getMessage());
+				}
 
 				
 
@@ -113,6 +159,28 @@ public class WidgetService extends Service {
 		return null;
 	}
 
+	
+	private class MyListener implements IHTTPUtilityListener{
 
+		@Override
+		public void responseReceived(HTTPResult httpResult) {
+
+			try {
+				Log.v("Ara", httpResult.getResponseAsJSONObject().getString("Seed"));
+			} catch (JSONException e) {
+				Log.v("Ara", httpResult.getRawResponse());
+			}
+		}
+
+		@Override
+		public void responseFailed(HTTPResult httpResult) {
+			// TODO Auto-generated method stub
+			Log.v("Ara", httpResult.getRawResponse());
+		}
+		
+	}
+
+
+	
 	
 }

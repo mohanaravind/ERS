@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/simplepage_background"
-    tools:context=".Verify" >
+    tools:context=".Verify"
+    android:paddingRight="5dp"
+    
+     >
 
     <TextView
         android:id="@+id/textView1"
@@ -20,7 +23,7 @@
         android:typeface="serif" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtVerifyDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -29,20 +32,8 @@
         android:text="@string/verify_description"
         android:typeface="serif" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="30dp"
-        android:text="@string/verify_instruction"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/gray_light"
-        android:typeface="serif" />
-
     <EditText
-        android:id="@+id/txtPhone"
+        android:id="@+id/txtPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
@@ -57,9 +48,9 @@
         android:id="@+id/btnOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtPhone"
-        android:layout_alignBottom="@+id/txtPhone"
-        android:layout_toRightOf="@+id/txtPhone"
+        android:layout_alignBaseline="@+id/txtPhoneNumber"
+        android:layout_alignBottom="@+id/txtPhoneNumber"
+        android:layout_toRightOf="@+id/txtPhoneNumber"
         android:gravity="center_vertical|center_horizontal|fill"
         android:onClick="btnOK_clicked"
         android:paddingBottom="0dp"
@@ -67,6 +58,18 @@
         android:paddingRight="30dp"
         android:paddingTop="0dp"
         android:text="@string/ok_verify"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtVerifyDescription"
+        android:layout_below="@+id/txtVerifyDescription"
+        android:layout_marginTop="16dp"
+        android:text="@string/verify_instruction"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/gray_light"
         android:typeface="serif" />
 
 </RelativeLayout>
